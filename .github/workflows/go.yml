@@ -9,6 +9,7 @@ on:
 jobs:
   test:
     runs-on: ${{ matrix.os }}
+    environment: development
     env:
       HOST_DATABASE: localhost
       PORT_DATABASE: 5432
@@ -38,6 +39,7 @@ jobs:
 
   build:
     needs: test
+    environment: development
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
