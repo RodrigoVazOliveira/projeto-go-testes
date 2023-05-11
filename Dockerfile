@@ -1,1 +1,10 @@
-FROM ubuntu
+FROM ubuntu:latest
+
+EXPOSE 8000
+WORKDIR /app
+
+ENV HOST_DATABASE=localhost  PORT_DATABASE=5432
+ENV USER_DATABASE=root PASS_DATABASE=root NAME_DATABASE=root
+
+COPY ./main main
+CMD ["./main"]
