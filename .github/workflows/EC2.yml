@@ -11,13 +11,6 @@ jobs:
         with:
           name: programa
       - uses: actions/checkout@v3
-      - name: ssh deploy
-        uses: easingthemes/ssh-deploy@v4.1.8
-        with:
-          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: ${{ secrets.REMOTE_TARGET }}
       - name: SSH Deploy
         uses: easingthemes/ssh-deploy@v4.1.8
         with:
