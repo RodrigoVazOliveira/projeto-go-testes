@@ -14,8 +14,8 @@ var (
 )
 
 func ConectaComBancoDeDados() {
-	stringDeConexao := "host=" + os.Getenv("HOST_DATABASE")  + " user="+ os.Getenv("USER_DATABASE") + 
-        " password=" + os.Getenv("PASS_DATABASE")  +  " dbname=" + os.Getenv("NAME_DATABASE")  + " port=" + os.Getenv("PORT_DATABASE") + " sslmode=disable"
+	stringDeConexao := "host=" + os.Getenv("DBHOST")  + " user="+ os.Getenv("DBUSER") + 
+        " password=" + os.Getenv("DBPASSWORD")  +  " dbname=" + os.Getenv("DBNAME")  + " port=" + os.Getenv("DBPORT") + " sslmode=disable"
 	DB, err = gorm.Open(postgres.Open(stringDeConexao))
 	if err != nil {
 		log.Panic("Erro ao conectar com banco de dados")
