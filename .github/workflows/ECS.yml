@@ -34,7 +34,7 @@ jobs:
     - name: Amazon ECS "Deploy Task Definition" Action for GitHub Actions
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
-        task-definition: ${{ steps.task-def.outputs.task-definition }}
+        task-definition: ${{ steps.task_def.outputs.task-definition }}
         service: ApiGoService
         cluster: ApiGoEC2
         wait-for-service-stability: true
