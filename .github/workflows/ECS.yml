@@ -21,4 +21,10 @@ jobs:
         task-definition: task-definition.json
         container-name: Go
         image: rodrigovazdeveloper/go_ci:${{ github.ref_name }}
-        #environment-variables: # optional
+        environment-variables: |
+            HOST=${{ secrets.DBHOST }}
+            USER=${{ secrets.DBUSER }}
+            PASSWORD=${{ secrets.DBPASSWORD }}
+            DBNAME=${{ secrets.DBNAME }}
+            DBPORT=${{ secrets.DBPORT }}
+            PORT=8000
