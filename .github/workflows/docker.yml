@@ -29,4 +29,4 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: rodrigovazdeveloper/go_ci:${{ github.ref_name }}
+        tags: rodrigovazdeveloper/go_ci:${{ github.run_number }}
