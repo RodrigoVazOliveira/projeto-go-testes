@@ -18,9 +18,9 @@ jobs:
       
     - name: Amazon ECS "Render Task Definition" Action for GitHub Actions
       uses: aws-actions/amazon-ecs-render-task-definition@v1
+      id: task_def
       with:
         task-definition: task-definition.json
-        id: task_def
         container-name: Go
         image: rodrigovazdeveloper/go_ci:${{ github.ref_name }}
         environment-variables: |
