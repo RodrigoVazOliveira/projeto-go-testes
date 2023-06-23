@@ -14,3 +14,11 @@ jobs:
         aws-region: us-east-1
     - name: Obtendo arquivo da tarefa
       run: aws ecs describe-task-definition --task-definition TarefaApiGo --query taskDefinition > task-definition.json
+      
+    - name: Amazon ECS "Render Task Definition" Action for GitHub Actions
+      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: TarefaApiGo
+        container-name: Go
+        image: rodrigovazdeveloper/go_ci:${{ github.ref_name }}
+        #environment-variables: # optional
