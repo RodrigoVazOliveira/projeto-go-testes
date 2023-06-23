@@ -6,7 +6,6 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    environment: development
     steps:
     - uses: actions/checkout@v3
     
