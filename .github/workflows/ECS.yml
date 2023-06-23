@@ -12,6 +12,7 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
+        
     - name: Obtendo arquivo da tarefa
       run: aws ecs describe-task-definition --task-definition TarefaApiGo --query taskDefinition > task-definition.json
       
@@ -19,6 +20,7 @@ jobs:
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
         task-definition: task-definition.json
+        id: task_def
         container-name: Go
         image: rodrigovazdeveloper/go_ci:${{ github.ref_name }}
         environment-variables: |
@@ -32,7 +34,7 @@ jobs:
     - name: Amazon ECS "Deploy Task Definition" Action for GitHub Actions
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
-        task-definition: task-definition.json
+        task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: ApiGoService
         cluster: ApiGoEC2
         wait-for-service-stability: true
