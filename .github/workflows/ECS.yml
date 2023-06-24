@@ -16,6 +16,9 @@ jobs:
     - name: Obtendo arquivo da tarefa
       run: aws ecs describe-task-definition --task-definition TarefaApiGo --query taskDefinition > task-definition.json
       
+    - name: copia do task-definition
+      run: cp task-definition.json task-definition.json.old
+      
     - name: Amazon ECS "Render Task Definition" Action for GitHub Actions
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       id: task_def
