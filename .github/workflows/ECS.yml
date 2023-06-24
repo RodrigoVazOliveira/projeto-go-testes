@@ -41,3 +41,16 @@ jobs:
         service: ApiGoService
         cluster: ApiGoEC2
         wait-for-service-stability: true
+    
+    - name: Requisição
+      continue-on-error: true
+      run: echo "REQUEST=0" >> $GITHUB_ENV ; sleep 30s ; wget http://lbapigoservice-1598150140.us-east-1.elb.amazonaws.com:8000/bruno || echo "REQUEST=1" >> $GITHUB_ENV
+      
+    - name: Amazon ECS "Deploy Task Definition" Action for GitHub Actions
+      if: ${{ env.REQUEST != 0  }}
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      with:
+        task-definition: task-definition.json.old
+        service: ApiGoService
+        cluster: ApiGoEC2
+        wait-for-service-stability: true
